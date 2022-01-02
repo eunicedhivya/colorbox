@@ -13,30 +13,31 @@ function App() {
 }
 
 function AddBox() {
-  const [color, setColor] = useState('orange');
+  const [color, setColor] = useState('pink');
   const styles = { backgroundColor: color };
-  // let test = ['orange', 'teal']
-  const [colorList, setColorList] = useState(['orange'])
+  const [colorList, setColorList] = useState(['teal', 'blue', 'orange'])
   return (
-    <div>
-      <input
-        style={styles}
-        value={color}
-        onChange={(e) => {
-          console.log(e.target.value);
-          setColor(e.target.value);
-        }}
-        placeholder='Enter a color' />
-      <button onClick={
-        () => {
-          setColorList([...colorList, color]);
-        }
-      }>Add Color</button>
-
+    <div className="container">
+      <h1>Colorbox</h1>
+      <div className='inputSection'>
+        <input
+          style={styles}
+          value={color}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setColor(e.target.value);
+          }}
+          placeholder='Enter a color' /> <br />
+        <button onClick={
+          () => {
+            setColorList([...colorList, color]);
+          }
+        }>Add Color</button>
+      </div>
       {
-        colorList.map(function (item) {
-          // console.log(item);
-          return <ColorBox key={item} clr={item} />
+        colorList.map(function (item, id) {
+          // console.log(item, id);
+          return <ColorBox key={id} clr={item} />
         })
       }
     </div>
@@ -47,9 +48,9 @@ function AddBox() {
 function ColorBox({ clr }) {
   const styles = {
     backgroundColor: clr,
-    height: '30px',
-    width: '250px',
-    marginTop: '20px'
+    height: '25px',
+    width: '93%',
+    margin: '10px auto 0 auto'
   }
   return (
     <div style={styles}></div>
